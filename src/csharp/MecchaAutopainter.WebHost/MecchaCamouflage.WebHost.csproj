@@ -1,0 +1,80 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <EnableWindowsTargeting>true</EnableWindowsTargeting>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <AssemblyName>meccha-camouflage</AssemblyName>
+    <RootNamespace>MecchaCamouflage.WebHost</RootNamespace>
+    <ApplicationIcon>..\..\..\resources\app-icons\icon.ico</ApplicationIcon>
+    <MecchaAppVersion Condition="'$(MecchaAppVersion)' == ''">dev</MecchaAppVersion>
+    <MecchaResearchBuild Condition="'$(MecchaResearchBuild)' == ''">false</MecchaResearchBuild>
+  </PropertyGroup>
+
+  <ItemGroup Condition="'$(MecchaResearchBuild)' != 'true'">
+    <Compile Remove="ResearchRunner.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <AssemblyAttribute Include="System.Reflection.AssemblyMetadataAttribute">
+      <_Parameter1>MecchaAppVersion</_Parameter1>
+      <_Parameter2>$(MecchaAppVersion)</_Parameter2>
+    </AssemblyAttribute>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MecchaCamouflage.Core\MecchaCamouflage.Core.csproj" />
+    <ProjectReference Include="..\MecchaCamouflage.Controller\MecchaCamouflage.Controller.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.4022.49" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="web\**\*">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToPublishDirectory>Never</CopyToPublishDirectory>
+    </Content>
+    <Content Include="..\..\..\resources\app-icons\icon.ico" Link="web\icon.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToPublishDirectory>Never</CopyToPublishDirectory>
+    </Content>
+    <Content Include="..\..\..\resources\fonts\d-din\**\*" LinkBase="web\fonts\d-din">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToPublishDirectory>Never</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="web\**\*">
+      <LogicalName>packaged/web/%(RecursiveDir)%(Filename)%(Extension)</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\..\resources\app-icons\icon.ico">
+      <LogicalName>packaged/web/icon.ico</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\..\resources\fonts\d-din\**\*">
+      <LogicalName>packaged/web/fonts/d-din/%(RecursiveDir)%(Filename)%(Extension)</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MecchaNativeRuntimeDir)\runtime-bridge.dll" Condition="'$(MecchaNativeRuntimeDir)' != ''">
+      <LogicalName>packaged/native/runtime-bridge.dll</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MecchaNativeRuntimeDir)\runtime-injector.exe" Condition="'$(MecchaNativeRuntimeDir)' != ''">
+      <LogicalName>packaged/native/runtime-injector.exe</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MecchaMeshProfilesDir)\*.json" Condition="'$(MecchaMeshProfilesDir)' != ''">
+      <LogicalName>packaged/web/mesh-profiles/%(Filename)%(Extension)</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MecchaWebView2BootstrapperPath)" Condition="'$(MecchaWebView2BootstrapperPath)' != ''">
+      <LogicalName>packaged/webview2-bootstrapper/MicrosoftEdgeWebview2Setup.exe</LogicalName>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <Target Name="RemoveUnusedWebView2WpfReference" BeforeTargets="ResolveAssemblyReferences">
+    <ItemGroup>
+      <Reference Remove="@(Reference)" Condition="'%(Reference.Filename)' == 'Microsoft.Web.WebView2.Wpf'" />
+    </ItemGroup>
+  </Target>
+</Project>

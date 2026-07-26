@@ -1,0 +1,367 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Meccha Camouflage</title>
+  <link rel="icon" href="icon.ico">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="workspace">
+    <section class="column">
+      <section class="panel panel-fill corner-accent">
+        <div class="settings-tabs" role="tablist" aria-label="Settings sections" data-i18n-aria-label="aria.settings.sections">
+          <button class="settings-tab active" type="button" data-settings-tab="paint" data-i18n="settings.paint">Paint</button>
+          <button class="settings-tab" type="button" data-settings-tab="image" data-i18n="settings.image">Image</button>
+          <button class="settings-tab" type="button" data-settings-tab="misc" data-i18n="settings.misc">Misc</button>
+          <button class="settings-tab" type="button" data-settings-tab="application" data-i18n="settings.app">App</button>
+        </div>
+
+        <div class="panel-scroll">
+          <div class="panel-content settings-stack">
+            <section class="settings-tab-panel" data-settings-panel="paint">
+            <div class="settings-group">
+            <div class="group-title" data-i18n="group.brush">Brush</div>
+            <div class="setting-grid">
+              <label class="field app-wide">
+                <span data-i18n="brush.size">Brush size</span>
+                <div class="range-row">
+                  <input id="brush-size" class="setting-control" disabled type="range" min="1" max="10" step="0.5">
+                  <input id="brush-size-number" class="setting-control range-number" disabled type="number" min="1" max="10" step="0.5">
+                </div>
+              </label>
+              <label class="field app-wide">
+                <span data-i18n="color.compression.tolerance">Color compression tolerance</span>
+                <div class="range-row">
+                  <input id="color-compression-tolerance" class="setting-control" disabled type="range" min="0" max="10" step="0.5">
+                  <input id="color-compression-tolerance-number" class="setting-control range-number" disabled type="number" min="0" max="10" step="0.5">
+                </div>
+              </label>
+            </div>
+          </div>
+
+            <div class="settings-group">
+            <div class="group-title" data-i18n="group.material">Material</div>
+            <div class="setting-grid">
+              <label class="field app-wide">
+                <div class="checkbox-row">
+                  <input id="auto-material" class="setting-control" disabled type="checkbox">
+                  <span data-i18n="auto.material">Auto Detect</span>
+                </div>
+              </label>
+              <label class="field">
+                <span data-i18n="metallic">Metallic</span>
+                <div class="range-row">
+                  <input id="metallic" class="setting-control" disabled type="range" min="0" max="1" step="0.01">
+                  <input id="metallic-number" class="setting-control range-number" disabled type="number" min="0" max="1" step="0.01">
+                </div>
+              </label>
+              <label class="field">
+                <span data-i18n="roughness">Roughness</span>
+                <div class="range-row">
+                  <input id="roughness" class="setting-control" disabled type="range" min="0" max="1" step="0.01">
+                  <input id="roughness-number" class="setting-control range-number" disabled type="number" min="0" max="1" step="0.01">
+                </div>
+              </label>
+              <label class="field">
+                <span data-i18n="emissive">Emissive</span>
+                <div class="range-row">
+                  <input id="emissive" class="setting-control" disabled type="range" min="0" max="1" step="0.01">
+                  <input id="emissive-number" class="setting-control range-number" disabled type="number" min="0" max="1" step="0.01">
+                </div>
+              </label>
+            </div>
+          </div>
+
+            <div class="settings-group">
+              <div class="group-title" data-i18n="regions">Regions</div>
+              <div class="region-grid">
+                <span class="field-label" data-i18n="region.back">Back</span>
+                <div class="region-choice" data-region="paint.backRegionMode"></div>
+                <span class="field-label" data-i18n="region.sides">Sides</span>
+                <div class="region-choice" data-region="paint.sideRegionMode"></div>
+                <span class="field-label" data-i18n="region.front">Front</span>
+                <div class="region-choice" data-region="paint.frontRegionMode"></div>
+              </div>
+            </div>
+
+            <div class="settings-group" id="paint-fill-section">
+            <div class="group-title" data-i18n="mode.fill">Fill</div>
+            <div class="setting-grid">
+              <label class="field app-wide">
+                <span data-i18n="fill.color">Color</span>
+                <div class="color-row">
+                  <input id="fill-color-picker" class="setting-control color-picker" disabled type="color">
+                  <input id="fill-color" class="setting-control mono-input" disabled type="text" spellcheck="false" placeholder="#FFFFFF">
+                </div>
+              </label>
+              <label class="field">
+                <span data-i18n="metallic">Metallic</span>
+                <div class="range-row">
+                  <input id="fill-metallic" class="setting-control" disabled type="range" min="0" max="1" step="0.01">
+                  <input id="fill-metallic-number" class="setting-control range-number" disabled type="number" min="0" max="1" step="0.01">
+                </div>
+              </label>
+              <label class="field">
+                <span data-i18n="roughness">Roughness</span>
+                <div class="range-row">
+                  <input id="fill-roughness" class="setting-control" disabled type="range" min="0" max="1" step="0.01">
+                  <input id="fill-roughness-number" class="setting-control range-number" disabled type="number" min="0" max="1" step="0.01">
+                </div>
+              </label>
+              <label class="field">
+                <span data-i18n="emissive">Emissive</span>
+                <div class="range-row">
+                  <input id="fill-emissive" class="setting-control" disabled type="range" min="0" max="1" step="0.01">
+                  <input id="fill-emissive-number" class="setting-control range-number" disabled type="number" min="0" max="1" step="0.01">
+                </div>
+              </label>
+            </div>
+          </div>
+
+            </section>
+
+            <section class="settings-tab-panel" data-settings-panel="image" hidden>
+              <input id="image-file-input" type="file" accept="image/png,image/jpeg,image/webp,.png,.jpg,.jpeg,.webp" multiple hidden>
+              <div class="image-settings-stack">
+                <div class="settings-group image-editor-section">
+                  <div class="group-title" data-i18n="group.editor">Editor</div>
+                  <div class="image-editor-action-grid">
+                    <button id="image-upload" class="image-edit-control" type="button" data-i18n="button.upload">Upload</button>
+                    <button id="image-preset-load" class="image-edit-control" type="button" data-i18n="button.load.preset">Load</button>
+                    <button id="image-preset-save" class="image-edit-control" type="button" data-i18n="button.save.preset">Save</button>
+                  </div>
+                  <div class="image-choice-list">
+                    <span class="field-label" title="Changes the game surface mapping; it does not move the image in the atlas." data-i18n="image.body.type" data-i18n-title="aria.image.body.type">Body type</span><div class="region-choice image-choice" role="group" aria-label="Body type" data-i18n-aria-label="aria.image.body.type">
+                      <button id="image-guide-round" class="image-edit-control active" type="button" data-i18n="body.round">Round</button>
+                      <button id="image-guide-cube" class="image-edit-control" type="button" data-i18n="body.cube">Cube</button>
+                    </div>
+                  </div>
+                  <div id="image-layer-list" class="image-layer-list" aria-live="polite"></div>
+                  <div class="image-canvas-wrap" id="image-drop-zone">
+                    <canvas id="image-placement-canvas" width="1024" height="512" aria-label="Four-face image placement canvas" data-i18n-aria-label="aria.image.canvas"></canvas>
+                  </div>
+                </div>
+                <div class="settings-group" id="image-brush-section">
+                  <div class="group-title" data-i18n="group.brush">Brush</div>
+                  <div class="setting-grid">
+                    <label class="field app-wide"><span data-i18n="brush.size">Brush size</span><div class="range-row"><input id="image-brush-size" class="image-edit-control" type="range" min="1" max="10" step="0.5" value="5"><input id="image-brush-size-number" class="image-edit-control range-number" type="number" min="1" max="10" step="0.5" value="5"></div></label>
+                    <label class="field app-wide"><span data-i18n="color.compression.tolerance">Color compression tolerance</span><div class="range-row"><input id="image-color-compression-tolerance" class="image-edit-control" type="range" min="0" max="10" step="0.5" value="0"><input id="image-color-compression-tolerance-number" class="image-edit-control range-number" type="number" min="0" max="10" step="0.5" value="0"></div></label>
+                  </div>
+                </div>
+                <div class="settings-group">
+                  <div class="group-title" data-i18n="group.material">Material</div>
+                  <div class="setting-grid">
+                    <label class="field"><span data-i18n="metallic">Metallic</span><div class="range-row"><input id="image-metallic" class="image-edit-control" type="range" min="0" max="1" step="0.01" value="0"><input id="image-metallic-number" class="image-edit-control range-number" type="number" min="0" max="1" step="0.01" value="0"></div></label>
+                    <label class="field"><span data-i18n="roughness">Roughness</span><div class="range-row"><input id="image-roughness" class="image-edit-control" type="range" min="0" max="1" step="0.01" value="1"><input id="image-roughness-number" class="image-edit-control range-number" type="number" min="0" max="1" step="0.01" value="1"></div></label>
+                    <label class="field"><span data-i18n="emissive">Emissive</span><div class="range-row"><input id="image-emissive" class="image-edit-control" type="range" min="0" max="1" step="0.01" value="0"><input id="image-emissive-number" class="image-edit-control range-number" type="number" min="0" max="1" step="0.01" value="0"></div></label>
+                  </div>
+                </div>
+                <div class="settings-group" id="image-fill-section">
+                  <div class="group-title" data-i18n="mode.fill">Fill</div>
+                  <div class="region-grid image-fill-region-grid">
+                    <span class="field-label" data-i18n="region.front">Front</span>
+                    <div class="region-choice" data-image-region="frontRegionMode"></div>
+                    <span class="field-label" data-i18n="region.right">Right</span>
+                    <div class="region-choice" data-image-region="rightRegionMode"></div>
+                    <span class="field-label" data-i18n="region.back">Back</span>
+                    <div class="region-choice" data-image-region="backRegionMode"></div>
+                    <span class="field-label" data-i18n="region.left">Left</span>
+                    <div class="region-choice" data-image-region="leftRegionMode"></div>
+                  </div>
+                  <div class="setting-grid image-fill-material-controls">
+                    <label class="field app-wide"><span data-i18n="fill.color">Color</span><div class="color-row"><input id="image-fill-color-picker" class="image-edit-control color-picker" type="color" value="#FFFFFF"><input id="image-fill-color" class="image-edit-control mono-input" type="text" spellcheck="false" placeholder="#FFFFFF"></div></label>
+                    <label class="field"><span data-i18n="metallic">Metallic</span><div class="range-row"><input id="image-fill-metallic" class="image-edit-control" type="range" min="0" max="1" step="0.01" value="1"><input id="image-fill-metallic-number" class="image-edit-control range-number" type="number" min="0" max="1" step="0.01" value="1"></div></label>
+                    <label class="field"><span data-i18n="roughness">Roughness</span><div class="range-row"><input id="image-fill-roughness" class="image-edit-control" type="range" min="0" max="1" step="0.01" value="0"><input id="image-fill-roughness-number" class="image-edit-control range-number" type="number" min="0" max="1" step="0.01" value="0"></div></label>
+                    <label class="field"><span data-i18n="emissive">Emissive</span><div class="range-row"><input id="image-fill-emissive" class="image-edit-control" type="range" min="0" max="1" step="0.01" value="0"><input id="image-fill-emissive-number" class="image-edit-control range-number" type="number" min="0" max="1" step="0.01" value="0"></div></label>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <section class="settings-tab-panel" data-settings-panel="misc" hidden></section>
+
+            <section class="settings-tab-panel" data-settings-panel="application" hidden>
+              <div class="settings-group app-general-section">
+                <div class="group-title" data-i18n="group.general">General</div>
+                <div class="setting-grid">
+              <label class="field app-wide">
+                <span data-i18n="language">Language</span>
+                <div class="select-wrap">
+                  <select id="language" class="setting-control mono-input" disabled></select>
+                </div>
+              </label>
+              <label class="field app-wide">
+                <div class="checkbox-row">
+                  <input id="always-on-top" class="setting-control" disabled type="checkbox">
+                  <span data-i18n="always.on.top">Always on top</span>
+                </div>
+              </label>
+                </div>
+              </div>
+              <div class="settings-group app-appearance-section">
+                <div class="group-title" data-i18n="group.appearance">Appearance</div>
+                <div class="setting-grid">
+              <label class="field app-wide">
+                <span data-i18n="theme.color">Theme color</span>
+                <div class="color-row">
+                  <input id="theme-color-picker" class="setting-control color-picker" disabled type="color">
+                  <input id="theme-color" class="setting-control mono-input" disabled type="text" spellcheck="false" placeholder="#FFFFFF">
+                </div>
+              </label>
+              <label class="field app-wide">
+                <span data-i18n="opacity">Opacity (%)</span>
+                <div class="range-row">
+                  <input id="opacity" class="setting-control" disabled type="range" min="35" max="100" step="1">
+                  <input id="opacity-number" class="setting-control range-number" disabled type="number" min="35" max="100" step="1">
+                </div>
+              </label>
+                </div>
+              </div>
+              <div class="settings-group app-hotkeys-section">
+                <div class="group-title" data-i18n="group.hotkeys">Hotkeys</div>
+                <div class="hotkey-list">
+                <div class="hotkey-row">
+                  <span data-i18n="start.hotkey">Start hotkey</span>
+                  <input id="start-hotkey" class="setting-control mono-input" disabled type="text" readonly>
+                  <button class="record-hotkey" type="button" disabled data-hotkey-key="app.startHotkey" data-hotkey-input="start-hotkey" data-i18n="button.record">Record</button>
+                </div>
+                <div class="hotkey-row">
+                  <span data-i18n="preview.hotkey">Preview hotkey</span>
+                  <input id="preview-hotkey" class="setting-control mono-input" disabled type="text" readonly>
+                  <button class="record-hotkey" type="button" disabled data-hotkey-key="app.previewHotkey" data-hotkey-input="preview-hotkey" data-i18n="button.record">Record</button>
+                </div>
+                <div class="hotkey-row">
+                  <span data-i18n="unpreview.hotkey">UnPreview hotkey</span>
+                  <input id="unpreview-hotkey" class="setting-control mono-input" disabled type="text" readonly>
+                  <button class="record-hotkey" type="button" disabled data-hotkey-key="app.unpreviewHotkey" data-hotkey-input="unpreview-hotkey" data-i18n="button.record">Record</button>
+                </div>
+                <div class="hotkey-row">
+                  <span data-i18n="stop.hotkey">Stop hotkey</span>
+                  <input id="stop-hotkey" class="setting-control mono-input" disabled type="text" readonly>
+                  <button class="record-hotkey" type="button" disabled data-hotkey-key="app.stopHotkey" data-hotkey-input="stop-hotkey" data-i18n="button.record">Record</button>
+                </div>
+                <div class="hotkey-row">
+                  <span data-i18n="hotkey.image.paint">Image paint hotkey</span>
+                  <input id="image-start-hotkey" class="setting-control mono-input" disabled type="text" readonly>
+                  <button class="record-hotkey" type="button" disabled data-hotkey-key="app.imageStartHotkey" data-hotkey-input="image-start-hotkey" data-i18n="button.record">Record</button>
+                </div>
+                <div class="hotkey-row">
+                  <span data-i18n="hotkey.image.preview">Image preview hotkey</span>
+                  <input id="image-preview-hotkey" class="setting-control mono-input" disabled type="text" readonly>
+                  <button class="record-hotkey" type="button" disabled data-hotkey-key="app.imagePreviewHotkey" data-hotkey-input="image-preview-hotkey" data-i18n="button.record">Record</button>
+                </div>
+                <div class="hotkey-row">
+                  <span data-i18n="hotkey.image.unpreview">Image unpreview hotkey</span>
+                  <input id="image-unpreview-hotkey" class="setting-control mono-input" disabled type="text" readonly>
+                  <button class="record-hotkey" type="button" disabled data-hotkey-key="app.imageUnpreviewHotkey" data-hotkey-input="image-unpreview-hotkey" data-i18n="button.record">Record</button>
+                </div>
+                <div class="hotkey-row">
+                  <span data-i18n="hotkey.image.stop">Image stop hotkey</span>
+                  <input id="image-stop-hotkey" class="setting-control mono-input" disabled type="text" readonly>
+                  <button class="record-hotkey" type="button" disabled data-hotkey-key="app.imageStopHotkey" data-hotkey-input="image-stop-hotkey" data-i18n="button.record">Record</button>
+                </div>
+              </div>
+              </div>
+            </section>
+          </div>
+        </div>
+
+        <div class="action-bar" data-settings-actions="paint">
+          <button class="danger-action" type="button" disabled data-settings-action="reset" data-i18n="button.reset">Reset</button>
+          <button type="button" data-settings-action="edit" data-i18n="button.edit">Edit</button>
+          <button type="button" disabled data-settings-action="cancel" data-i18n="button.cancel">Cancel</button>
+          <button class="primary" type="button" disabled data-settings-action="save" data-i18n="button.save">Save</button>
+        </div>
+        <div class="action-bar" data-settings-actions="image" hidden>
+          <button class="danger-action" type="button" disabled data-settings-action="reset" data-i18n="button.reset">Reset</button>
+          <button type="button" data-settings-action="edit" data-i18n="button.edit">Edit</button>
+          <button type="button" disabled data-settings-action="cancel" data-i18n="button.cancel">Cancel</button>
+          <button class="primary" type="button" disabled data-settings-action="save" data-i18n="button.save">Save</button>
+        </div>
+        <div class="action-bar" data-settings-actions="application" hidden>
+          <button class="danger-action" type="button" disabled data-settings-action="reset" data-i18n="button.reset">Reset</button>
+          <button type="button" data-settings-action="edit" data-i18n="button.edit">Edit</button>
+          <button type="button" disabled data-settings-action="cancel" data-i18n="button.cancel">Cancel</button>
+          <button class="primary" type="button" disabled data-settings-action="save" data-i18n="button.save">Save</button>
+        </div>
+      </section>
+    </section>
+
+    <section class="column">
+      <section class="log-panel">
+        <div class="log-tabs">
+          <div class="tabs" role="tablist" aria-label="Log level" data-i18n-aria-label="log.level">
+            <button class="tab active" type="button" data-log-filter="all" data-i18n="log.all">All</button>
+            <button class="tab" type="button" data-log-filter="info" data-i18n="log.info">Info</button>
+            <button class="tab" type="button" data-log-filter="warn" data-i18n="log.warn">Warn</button>
+            <button class="tab" type="button" data-log-filter="error" data-i18n="log.error">Error</button>
+          </div>
+          <div class="log-actions">
+            <button id="open-logs" type="button" data-i18n="button.open.logs">Open</button>
+            <button id="copy-logs" type="button" data-i18n="button.copy.all">Copy</button>
+          </div>
+        </div>
+        <pre id="logs" class="logs"></pre>
+        <div id="toast" role="status" aria-live="polite"></div>
+        <section id="manual-paint-controls" class="manual-paint-controls">
+          <div class="manual-paint-group">
+            <div class="action-bar manual-paint-grid">
+              <div class="manual-paint-label" data-i18n="mode.paint">Paint</div>
+              <button type="button" disabled data-manual-paint-command="paint" data-i18n="button.start">Start</button>
+              <button class="danger-action" type="button" disabled data-manual-paint-command="stop" data-i18n="button.stop">Stop</button>
+              <button type="button" disabled data-manual-paint-command="preview" data-i18n="button.preview">Preview</button>
+              <button type="button" disabled data-manual-paint-command="unpreview" data-i18n="button.unpreview">Unpreview</button>
+            </div>
+          </div>
+          <div class="manual-paint-group">
+            <div class="action-bar manual-paint-grid">
+              <div class="manual-paint-label" data-i18n="manual.image.paint">Image Paint</div>
+              <button type="button" disabled data-manual-paint-command="imagePaint" data-i18n="button.start">Start</button>
+              <button class="danger-action" type="button" disabled data-manual-paint-command="imageStop" data-i18n="button.stop">Stop</button>
+              <button type="button" disabled data-manual-paint-command="imagePreview" data-i18n="button.preview">Preview</button>
+              <button type="button" disabled data-manual-paint-command="imageUnpreview" data-i18n="button.unpreview">Unpreview</button>
+            </div>
+          </div>
+        </section>
+      </section>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div>
+      <span><span data-i18n="footer.game">GAME</span>: <b id="footer-process" class="status-token">-</b></span>
+      <span>|</span>
+      <span><span data-i18n="footer.bridge">BRIDGE</span>: <b id="footer-bridge" class="status-token">-</b></span>
+    </div>
+    <div>
+      <span id="footer-zoom">100%</span>
+      <span>|</span>
+      <a href="https://github.com/acentrist/MecchaCamouflage" data-i18n="link.github">GitHub</a>
+      <span>|</span>
+      <span id="version">dev</span>
+    </div>
+  </footer>
+
+  <div id="hotkey-dialog" class="hotkey-dialog" hidden>
+    <div class="hotkey-card">
+      <strong data-i18n="dialog.hotkey.title">Press a function key</strong>
+      <span id="hotkey-dialog-message" data-i18n="dialog.hotkey.supported">F1-F24 are supported.</span>
+      <span class="hotkey-help" data-i18n="dialog.hotkey.cancel">Esc to cancel.</span>
+    </div>
+  </div>
+
+  <div id="crop-editor-dialog" class="crop-editor-dialog" hidden>
+    <div class="crop-editor-card" role="dialog" aria-modal="true" aria-labelledby="crop-editor-title">
+      <strong id="crop-editor-title" data-i18n="dialog.crop.title">Crop selected image</strong>
+      <span class="crop-editor-help" data-i18n="dialog.crop.help">Zoom in to shrink the selection, drag it into place, then choose Apply crop.</span>
+      <div class="crop-editor-stage-wrap"><div id="crop-editor-stage" class="crop-editor-stage"><img id="crop-editor-image" alt="Image being cropped" data-i18n-alt="dialog.crop.image.alt"><div id="crop-editor-selection" class="crop-editor-selection"></div></div></div>
+      <label class="crop-editor-zoom"><span data-i18n="dialog.crop.zoom">Zoom</span><input id="crop-editor-zoom" type="range" min="100" max="400" step="1" value="100"></label>
+      <div class="crop-editor-actions"><button id="crop-editor-reset" type="button" data-i18n="dialog.crop.reset">Reset crop</button><button id="crop-editor-cancel" type="button" data-i18n="button.cancel">Cancel</button><button id="crop-editor-apply" class="primary" type="button" data-i18n="dialog.crop.apply">Apply crop</button></div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
