@@ -94,7 +94,7 @@ ESP · Aimbot · God Mode · Teleport · Speed Hack · Auto Paint
 
 ## 📝 Tags
 
-- meccha-auto-painnter
+- meccha-auto-painter
 - meccha-chameleon
 - meccha-chameleon-tool
 - meccha-chameleon-utility
