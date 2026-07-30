@@ -106,7 +106,10 @@ ESP · Aimbot · God Mode · Teleport · Speed Hack · Auto Paint
 - meccha-chameleon-speed-hack
 - meccha-chameleon-2026
 - meccha-chameleon-mod-menu
-- meaccha-chameleon-trainer
+- meccha-chameleon-trainer
+- mecca-chameleon-auto-painting
+- mecca-chameleon-auto-painter
+- mecca-chameleon-tool
 - game-utility
 - free-tool
 - esp-tool
